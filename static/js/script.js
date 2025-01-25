@@ -150,6 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const modal = document.createElement('div');
         modal.id = 'story-edit-modal';
         modal.classList.add('modal');
+        // Add style to ensure it's hidden by default
+        modal.style.display = 'none';
         modal.innerHTML = `
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
@@ -186,14 +188,24 @@ document.addEventListener('DOMContentLoaded', () => {
             .join('');
 
         storyEditTextarea.value = storyText.trim();
-        editModal.style.display = 'block';
+        // Use display block to show modal
+        editModal.style.display = 'flex';
     }
 
-    // Close modal functionality
-    closeModalBtn.addEventListener('click', () => {
+    function closeEditModal() {
+        // Use display none to hide modal
         editModal.style.display = 'none';
-    });
+    }
 
+    // Close modal when clicking the close button
+    closeModalBtn.addEventListener('click', closeEditModal);
+
+    // Close modal when clicking outside the modal content
+    editModal.addEventListener('click', (e) => {
+        if (e.target === editModal) {
+            closeEditModal();
+        }
+    });
     // Save edit functionality
     saveEditBtn.addEventListener('click', () => {
         // Update story sections with edited text
@@ -214,9 +226,8 @@ document.addEventListener('DOMContentLoaded', () => {
             finalStoryContent.appendChild(storyPart);
         });
 
-        editModal.style.display = 'none';
+        closeEditModal();
     });
-
     // Download story functionality
     downloadStoryBtn.addEventListener('click', () => {
         const storyText = storyEditTextarea.value;
@@ -226,7 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
         link.download = 'StoryForge_Story.txt';
         link.click();
     });
-
     // Add edit button after story generation
     function addEditButton() {
         const editButton = document.createElement('button');
