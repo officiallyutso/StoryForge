@@ -176,9 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadStoryBtn = document.getElementById('download-story-btn');
     const closeModalBtn = editModal.querySelector('.close-modal');
 
-    // Function to open edit modal
     function openEditModal() {
-        // Collect story text from all sections
         const storyText = Array.from(finalStoryContent.children)
             .map(section => {
                 const sectionTitle = section.querySelector('h3').textContent;
@@ -188,27 +186,21 @@ document.addEventListener('DOMContentLoaded', () => {
             .join('');
 
         storyEditTextarea.value = storyText.trim();
-        // Use display block to show modal
         editModal.style.display = 'flex';
     }
 
     function closeEditModal() {
-        // Use display none to hide modal
         editModal.style.display = 'none';
     }
 
-    // Close modal when clicking the close button
     closeModalBtn.addEventListener('click', closeEditModal);
 
-    // Close modal when clicking outside the modal content
     editModal.addEventListener('click', (e) => {
         if (e.target === editModal) {
             closeEditModal();
         }
     });
-    // Save edit functionality
     saveEditBtn.addEventListener('click', () => {
-        // Update story sections with edited text
         const editedSections = storyEditTextarea.value.split('\n\n');
         finalStoryContent.innerHTML = '';
 
@@ -228,7 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         closeEditModal();
     });
-    // Download story functionality
     downloadStoryBtn.addEventListener('click', () => {
         const storyText = storyEditTextarea.value;
         const blob = new Blob([storyText], { type: 'text/plain' });
@@ -237,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
         link.download = 'StoryForge_Story.txt';
         link.click();
     });
-    // Add edit button after story generation
     function addEditButton() {
         const editButton = document.createElement('button');
         editButton.classList.add('edit-story-btn');
@@ -247,7 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         editButton.addEventListener('click', openEditModal);
         
-        // Remove any existing edit buttons first
         const existingEditButtons = finalStorySection.querySelectorAll('.edit-story-btn');
         existingEditButtons.forEach(btn => btn.remove());
         
@@ -278,9 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.status === 'success') {
                 finalStoryContent.innerHTML = '';
                 
-                // Handle both object and string responses
                 if (typeof data.improved_story === 'object') {
-                    // If it's an object with sections
                     Object.entries(data.improved_story).forEach(([key, value]) => {
                         const storyPart = document.createElement('div');
                         storyPart.classList.add('story-section');

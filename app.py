@@ -10,6 +10,14 @@ client = MiraClient(config={"API_KEY": "sb-b55907818667805d636940340f42d849"})
 def index():
     return render_template('index.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 @app.route('/generate_stories', methods=['POST'])
 def generate_stories():
     tone = request.form.get('tone', '')
@@ -26,15 +34,12 @@ def generate_stories():
     try:
         result = client.flow.execute(flow_name, input_data)
         
-        # Ensure exactly 5 plots are generated
         outlines = result.get("outlinestory", "").split("\n")
         plots = [plot.strip() for plot in outlines if plot.strip()]
         
-        # If fewer than 5 plots, pad with placeholder plots
         while len(plots) < 5:
             plots.append(f"Plot {len(plots) + 1}: Additional plot option needed")
         
-        # Truncate to exactly 5 plots if more than 5
         plots = plots[:5]
         
         return jsonify({
@@ -69,7 +74,6 @@ def improve_story():
     try:
         result = client.flow.execute(flow_name, input_data)
         
-        # Convert result to 5 sections if it's a single string
         if isinstance(result, str):
             sections = result.split('\n\n')[:5]
             result = {f"Section {i+1}": section for i, section in enumerate(sections)}

@@ -1,0 +1,85 @@
+.glass-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .glass-menu {
+    background: rgba(30, 30, 30, 0.1);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.glass-menu .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.glass-menu .menu-items {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.glass-menu .menu-items li a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.glass-menu .menu-items li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-primary);
+    transition: width 0.3s ease;
+}
+
+.glass-menu .menu-items li a:hover {
+    color: var(--accent-primary);
+}
+
+.glass-menu .menu-items li a:hover::after {
+    width: 100%;
+}
+
+.glass-menu .theme-toggle {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.glass-menu .theme-toggle:hover {
+    transform: rotate(180deg);
+    background: var(--accent-primary);
+    color: white;
+}
+
+body {
+    padding-top: 80px;
+}

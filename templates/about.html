@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About StoryForge - AI Story Generation Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particle-js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+</head>
+<body class="about-page">
+    <nav class="glass-menu">
+        <div class="logo">
+            <i class="fas fa-book-open"></i>
+            StoryForge
+        </div>
+        <ul class="menu-items">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        <div class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </div>
+    </nav>
+
+    <div id="particles-js" class="particle-background"></div>
+
+    <div class="about-container">
+        <section class="hero-section glass-card">
+            <h1>StoryForge: AI-Powered Story Generation</h1>
+            <p>Unleashing Creativity Through Advanced AI Technology</p>
+        </section>
+
+        <section class="project-overview glass-card">
+            <h2>Project Overview</h2>
+            <div class="overview-content">
+                <div class="overview-text">
+                    <p>StoryForge is an innovative AI-driven platform designed to revolutionize creative writing by providing intelligent story generation tools. Our mission is to empower writers, break creative barriers, and inspire storytelling through cutting-edge artificial intelligence.</p>
+                    
+                    <h3>Key Project Objectives</h3>
+                    <ul>
+                        <li>Develop an intelligent story generation system</li>
+                        <li>Create an intuitive user interface for creative exploration</li>
+                        <li>Provide customizable story generation options</li>
+                        <li>Support writers in overcoming creative blockages</li>
+                    </ul>
+                </div>
+                <div class="overview-illustration">
+                    <i class="fas fa-robot"></i>
+                </div>
+            </div>
+        </section>
+
+        <section class="technical-details glass-card">
+            <h2>Technical Architecture</h2>
+            <div class="code-snippet">
+                <pre><code class="language-python">
+class StoryForgeAI:
+    def __init__(self, tone, genre, topic):
+        self.tone = tone
+        self.genre = genre
+        self.topic = topic
+        self.story_generator = AIStoryGenerator()
+    
+    def generate_story_outline(self):
+        context = self._prepare_context()
+        outline = self.story_generator.generate(context)
+        return outline
+    
+    def _prepare_context(self):
+        return {
+            'tone': self.tone,
+            'genre': self.genre,
+            'topic': self.topic,
+            'complexity': 'medium'
+        }
+                </code></pre>
+            </div>
+        </section>
+
+        <section class="team-section glass-card">
+            <h2>Meet the Creators</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="Utso Sarkar">
+                    <h3>Utso Sarkar</h3>
+                    <p>Lead AI Developer & Architect</p>
+                    <div class="social-links">
+                        <a href="https://github.com/utsosarkar" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://utsosarkar.com" target="_blank"><i class="fas fa-globe"></i></a>
+                        <a href="https://linkedin.com/in/utsosarkar" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="Shreyan Narula">
+                    <h3>Shreyan Narula</h3>
+                    <p>Frontend & UX Design Specialist</p>
+                    <div class="social-links">
+                        <a href="https://github.com/shreyannarula" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://shreyannarula.com" target="_blank"><i class="fas fa-globe"></i></a>
+                        <a href="https://linkedin.com/in/shreyannarula" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mira-ai-section glass-card">
+            <h2>About MIRA AI</h2>
+            <div class="mira-content">
+                <div class="mira-text">
+                    <p>MIRA (Multimodal Intelligent Reasoning Assistant) is our proprietary AI framework that powers StoryForge's story generation capabilities. Built on advanced natural language processing and machine learning techniques, MIRA understands context, creativity, and narrative structures.</p>
+                    
+                    <h3>MIRA's Core Capabilities</h3>
+                    <ul>
+                        <li>Context-aware story generation</li>
+                        <li>Tone and genre adaptation</li>
+                        <li>Creative narrative exploration</li>
+                        <li>Semantic understanding</li>
+                    </ul>
+                </div>
+                <div class="mira-illustration">
+                    <i class="fas fa-brain"></i>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/about.js') }}"></script>
+</body>
+</html>
