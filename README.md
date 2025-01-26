@@ -163,4 +163,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 UTSO SARKAR - utsosarkar1@gmail.com
 
-Project Link: [https://github.com/yourusername/officiallyutso]
+SHREYAN NARULA - shreyan_n@ma.iitr.ac.in
+
+Project Link: [[https://github.com/yourusername/officiallyutso](https://github.com/officiallyutso/StoryForge)]
